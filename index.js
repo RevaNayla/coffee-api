@@ -13,6 +13,11 @@ app.use(express.json());
 // Sajikan gambar dari folder "images"
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// Route untuk root URL "/"
+app.get('/', (req, res) => {
+  res.send('<h1>Welcome to Coffee API!</h1><p>Try <a href="/coffee">/coffee</a> to view the coffee list.</p>');
+});
+
 // Endpoint untuk membaca CSV dan kirim JSON
 app.get('/coffee', (req, res) => {
   const csvPath = path.join(__dirname, 'coffee_list_data.csv');
